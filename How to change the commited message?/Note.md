@@ -1,4 +1,4 @@
-# README: Editing the Last Commit Message in Git
+# Editing the Last Commit Message in Git
 
 ## Overview
 This README provides a step-by-step guide to editing the last commit message in Git using the `--amend` option. It also includes instructions on how to use two common text editors, **Vim** and **Nano**, for this purpose.
