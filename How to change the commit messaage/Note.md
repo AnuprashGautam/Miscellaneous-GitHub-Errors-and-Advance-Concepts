@@ -1,91 +1,35 @@
-# Editing the Last Commit Message in Git
-
-## Overview
-This README provides a step-by-step guide to editing the last commit message in Git using the `--amend` option. It also includes instructions on how to use two common text editors, **Vim** and **Nano**, for this purpose.
+To change the last commit message in Git, follow these steps:
 
 ---
 
-## Prerequisites
-- Git installed on your system.
-- A repository with at least one commit.
+### 1. If the commit has not been pushed:
+Use the `git commit --amend` command to edit the last commit message:
 
----
-
-## Steps to Edit the Last Commit Message
-
-### 1. Run the Amend Command
-Execute the following command to start editing the last commit message:
 ```bash
-git commit --amend
+git commit --amend -m "New commit message"
 ```
 
-### 2. Modify the Commit Message
-Depending on your system's Git configuration, the command opens the default text editor. You can modify the commit message as needed.
-
-### 3. Save and Exit the Editor
-The process to save and exit varies depending on the text editor in use:
-
-#### Using **Vim**:
-1. **Edit the message**: Use the arrow keys to navigate and type your updated message.
-2. **Save and exit**:
-   - Press `Esc` to switch to command mode.
-   - Type `:wq` (write and quit) and press `Enter`.
-
-#### Using **Nano**:
-1. **Edit the message**: Use the arrow keys to navigate and make changes.
-2. **Save and exit**:
-   - Press `Ctrl+O` (write out).
-   - Press `Enter` to confirm the file name.
-   - Press `Ctrl+X` to exit Nano.
-
-### 4. Push Changes (if required)
-If the commit has already been pushed to a remote repository, you'll need to force-push the changes:
-```bash
-git push --force
-```
-> ⚠️ **Warning**: Force-pushing rewrites history. Use it cautiously, especially on shared branches.
+This opens the last commit for editing. The new message replaces the old one.
 
 ---
 
-## Example Workflow
+### 2. If the commit has already been pushed:
+If the commit is already pushed to a shared branch, you need to force-push the amended commit. 
 
-### Before Editing
-```bash
-$ git log -1
-commit abcdef1234567890 (HEAD -> main)
-Author: Your Name <your.email@example.com>
-Date:   Thu Dec 5 14:00:00 2024 +0530
+1. Amend the last commit message:
+   ```bash
+   git commit --amend -m "New commit message"
+   ```
 
-    Initial commit with wrong message
-```
-
-### After Running `git commit --amend` and Updating
-```bash
-$ git log -1
-commit abcdef1234567890 (HEAD -> main)
-Author: Your Name <your.email@example.com>
-Date:   Thu Dec 5 14:00:00 2024 +0530
-
-    Corrected commit message
-```
+2. Force-push the changes:
+   ```bash
+   git push --force
+   ```
 
 ---
 
-## Common Issues and Solutions
+### Important Notes:
+- **Collaboration Warning**: Force-pushing can overwrite others' work if they are working on the same branch. Inform your team before proceeding.
+- **Use with Care**: Avoid using `--force` on shared branches unless absolutely necessary.
 
-### Problem: Exiting Vim without saving changes
-If you accidentally opened Vim and want to quit without saving:
-1. Press `Esc`.
-2. Type `:q!` and press `Enter`.
-
-### Problem: Incorrect commit pushed to a shared branch
-If you force-pushed an incorrect commit:
-1. Communicate with your team to resolve any potential conflicts.
-2. Consider using `git reflog` to recover previous states if needed.
-
----
-
-## Additional Resources
-- [Git Documentation - git-commit](https://git-scm.com/docs/git-commit)
-- [Vim Documentation](https://www.vim.org/docs.php)
-- [GNU Nano Documentation](https://www.nano-editor.org/docs.php)
+Would you like a detailed explanation or steps to handle potential conflicts?
