@@ -29,6 +29,10 @@ When you change **only the case of letters** in a folder or file name (like rena
    git commit -m "Renamed 'Folder' to 'folder'"
    ```
 
+**Note:**
+- `git mv` command only works when the folder is not empty and committed. Otherwise, git doesn't work on the empty folder, and since there `git` in the command, the changes can only be observed when the folder is committed i.e. known to git.
+- `git mv` command automatically execute `add` command. We just have to commit and push the changes.
+
 ---
 
 #### **Method 2: Configure Git to Track Case Changes**
